@@ -13,7 +13,10 @@ let winningCombination = [
     [0,4,8],
     [2,4,6]
 ]
-var count = 0
+var count = 0 //this will check any player won or not--> if count == 0 (than no player won). if count > 0 (match won)
+var filled = 0 // if (filled = 9 && count 0 )means all cell filled and no player won...that means game is draw.
+
+//checking Winnner
 function checkForWinner(){
     winningCombination.forEach(function(combination){
         let check = combination.every(idx => cells[idx].innerText.trim() == currentPlayer)
@@ -23,6 +26,7 @@ function checkForWinner(){
     })
 }
 
+//Highlighting winning cell
 function highlightCells(combination){
     combination.forEach(function(idx){
         cells[idx].classList.add("highlight")  
@@ -35,7 +39,12 @@ function highlightCells(combination){
 
 cells.forEach(function(cell){
     cell.addEventListener('click',function(){
-        if(cell.innerText.trim() != "")return
+        if(cell.innerText.trim() != ""){
+            if(filled >= 8){
+                alert("Play Again")
+            }
+            return
+        }
         if(count != 0){
             alert("click play Again")
             return
@@ -43,5 +52,9 @@ cells.forEach(function(cell){
         cell.innerText = currentPlayer
         checkForWinner()
         currentPlayer = currentPlayer == "X" ? "O" : "X"
+        filled++
+        if(filled >= 9 && count == 0){
+            alert("Match Draw - Play Again")
+        }
     })
 })

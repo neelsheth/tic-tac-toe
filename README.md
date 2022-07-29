@@ -5,7 +5,7 @@
 
     --> This is Game Page of Tic Tac Toe. i made this using HTML-CSS-JAVA-Script.
         
-    --> This is  game for two players who take turns making the spaces in a three-by-three grid with X or O. the player who succeeds in placing three of their markes in a Horizontal , vertical or Diagonal row is the winner.
+    --> This is interesting game for two players who take turns making the spaces in a three-by-three grid with X or O. the player who succeeds in placing three of their markes in a Horizontal , vertical or Diagonal row is the winner.
           
 
 ## Tic Tac Toe Interface

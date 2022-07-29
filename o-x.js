@@ -13,13 +13,12 @@ let winningCombination = [
     [0,4,8],
     [2,4,6]
 ]
-    
+var count = 0
 function checkForWinner(){
     winningCombination.forEach(function(combination){
         let check = combination.every(idx => cells[idx].innerText.trim() == currentPlayer)
         if(check){
             highlightCells(combination) 
-            return
         }
     })
 }
@@ -28,6 +27,7 @@ function highlightCells(combination){
     combination.forEach(function(idx){
         cells[idx].classList.add("highlight")  
     })
+    count++;
     if(currentPlayer == 'X') alert("Congratulations!!! Player X won.");
     else alert("Congratulations!!! Player O won");
 }
@@ -35,7 +35,11 @@ function highlightCells(combination){
 
 cells.forEach(function(cell){
     cell.addEventListener('click',function(){
-        if(cell.innerText.trim() != "") return
+        if(cell.innerText.trim() != "")return
+        if(count != 0){
+            alert("click play Again")
+            return
+        }
         cell.innerText = currentPlayer
         checkForWinner()
         currentPlayer = currentPlayer == "X" ? "O" : "X"
